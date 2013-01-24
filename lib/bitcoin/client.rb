@@ -204,6 +204,41 @@ class Bitcoin::Client
     @api.request 'verifymessage', bitcoinaddress, signature, message
   end
 
+  # version 0.7 Returns data about each connected node.
+  def getpeerinfo
+    @api.request 'getpeerinfo'
+  end
+  
+  # version 0.7 Returns all transaction ids in memory pool
+  def getrawmempool
+    @api.request 'getrawmempool'
+  end
+  
+  # version 0.7 Returns raw transaction representation for given transaction id.
+  def getrawtransaction(txid, verbose = 0)
+    @api.request 'getrawtransaction', txid, verbose
+  end
+  
+  # version 0.7 Returns array of unspent transaction inputs in the wallet.  
+  def listunspent(minconf = 1, maxconf = 999999)
+    @api.request 'listunspent', minconf, maxconf
+  end
+
+  # version 0.7 version 0.7 Submits raw transaction (serialized, hex-encoded) to local node and network.  
+  def sendrawtransaction(transaction)
+    @api.request 'sendrawtransaction', transaction
+  end  
+
+  # version 0.7 Produces a human-readable JSON object for a raw transaction.
+  def decoderawtransaction(transaction)
+    @api.request 'decoderawtransaction', transaction
+  end  
+
+  # version 0.7 Creates a raw transaction spending given inputs.
+  def createrawtransaction(txid, vout, address, amount)
+    @api.request 'createrawtransaction', [{"txid" => txid,"vout" => vout}], {address => amount}
+  end
+
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
