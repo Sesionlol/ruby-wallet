@@ -235,8 +235,8 @@ class Bitcoin::Client
   end  
 
   # version 0.7 Creates a raw transaction spending given inputs.
-  def createrawtransaction(txid, vout, address, amount)
-    @api.request 'createrawtransaction', [{"txid" => txid,"vout" => vout}], {address => amount}
+  def createrawtransaction(input, output)
+    @api.request 'createrawtransaction', input, output
   end
 
   alias account getaccount
