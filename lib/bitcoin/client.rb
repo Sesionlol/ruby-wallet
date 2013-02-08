@@ -238,7 +238,12 @@ class Bitcoin::Client
   def createrawtransaction(input, output)
     @api.request 'createrawtransaction', input, output
   end
-
+  
+  # version 0.7 Signs a raw transaction
+  def signrawtransaction(hex, txinfo, keys)
+    @api.request 'signrawtransaction', hex, txinfo, keys
+  end  
+  
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
