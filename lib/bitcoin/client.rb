@@ -240,7 +240,7 @@ class Bitcoin::Client
   end
   
   # version 0.7 Signs a raw transaction
-  def signrawtransaction(hex, txinfo, keys)
+  def signrawtransaction(hex, txinfo = nil, keys = nil)
     @api.request 'signrawtransaction', hex, txinfo, keys
   end  
   
