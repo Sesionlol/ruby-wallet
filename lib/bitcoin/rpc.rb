@@ -23,7 +23,11 @@ class Bitcoin::RPC
   end
   
   def dispatch(request)
-    respdata = RestClient.post service_url, request.to_post_data
+    begin
+      respdata = RestClient.post service_url, request.to_post_data
+    rescue => e
+      puts e.response
+    end
     puts respdata
     response = JSON.parse(respdata)
     puts response
