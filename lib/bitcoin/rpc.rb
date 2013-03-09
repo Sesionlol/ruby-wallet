@@ -31,7 +31,7 @@ class Bitcoin::RPC
       return response['result']
     rescue => e
       puts e.response
-      return e.response['result']
+      return e.response['error']
     end
   end
 
