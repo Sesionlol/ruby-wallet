@@ -28,9 +28,7 @@ class Bitcoin::RPC
     rescue => e
       puts e.response
     end
-    puts respdata
     response = JSON.parse(respdata)
-    puts response
     raise Bitcoin::Errors::RPCError, response['error'] if response['error']
     response['result']
   end
