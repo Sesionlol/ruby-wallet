@@ -227,18 +227,18 @@ class Bitcoin::Client
   # version 0.7 version 0.7 Submits raw transaction (serialized, hex-encoded) to local node and network.  
   def sendrawtransaction(transaction)
     @api.request 'sendrawtransaction', transaction
-  end  
+  end
 
   # version 0.7 Produces a human-readable JSON object for a raw transaction.
   def decoderawtransaction(transaction)
     @api.request 'decoderawtransaction', transaction
-  end  
+  end
 
   # version 0.7 Creates a raw transaction spending given inputs.
   def createrawtransaction(input, output)
     @api.request 'createrawtransaction', input, output
   end
-  
+
   # version 0.7 Signs a raw transaction
   def signrawtransaction(hex, txinfo = nil, keys = nil)
     @api.request 'signrawtransaction', hex, txinfo, keys
@@ -249,7 +249,7 @@ class Bitcoin::Client
   end
 
   def walletpassphrase(passphrase, timeout = 20)
-    @api.request 'walletpassphrase', passphrase
+    @api.request 'walletpassphrase', passphrase, timeout
   end
 
   def walletlock

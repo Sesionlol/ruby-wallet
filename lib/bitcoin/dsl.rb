@@ -231,7 +231,7 @@ module Bitcoin::DSL
   end
 
   def walletpassphrase(passphrase, timeout = 20)
-    bitcoin.walletpassphrase passphrase, timeout
+    bitcoin.walletpassphrase "abc!", "20"
   end
 
   def walletlock
