@@ -28,7 +28,7 @@ class Bitcoin::API
   
   def request(service_name, *params)
     req = Bitcoin::Request.new(service_name, params)
-    puts req
+    puts req.to_json
     puts Bitcoin::RPC.new(to_hash).dispatch(req)
   end
 end

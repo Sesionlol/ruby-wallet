@@ -24,7 +24,9 @@ class Bitcoin::RPC
   
   def dispatch(request)
     respdata = RestClient.post service_url, request.to_post_data
+    puts respdata
     response = JSON.parse(respdata)
+    puts response
     raise Bitcoin::Errors::RPCError, response['error'] if response['error']
     response['result']
   end
