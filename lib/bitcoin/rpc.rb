@@ -6,7 +6,7 @@ class Bitcoin::RPC
     @host, @port = options[:host], options[:port]
     @ssl = options[:ssl]
   end
-  
+
   def credentials
     if @user
       "#{@user}:#{@pass}"
@@ -14,25 +14,27 @@ class Bitcoin::RPC
       nil
     end
   end
-  
+
   def service_url
     url = @ssl ? "https://" : "http://"
     url.concat "#{credentials}@" if c = credentials
     url.concat "#{@host}:#{@port}"
     url
   end
-  
+
   def dispatch(request)
     begin
       respdata = RestClient.post service_url, request.to_post_data
       response = JSON.parse(respdata)
       raise Bitcoin::Errors::RPCError, response['error'] if response['error']
-      response['result']
+      puts response
+      return response['result']
     rescue => e
       puts e.response
+      return e.response['result']
     end
   end
-  
+
   private
   def symbolize_keys(hash)
     case hash
