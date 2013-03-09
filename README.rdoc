@@ -75,14 +75,9 @@ Here are several examples of how you can change the host information:
 You should see the Bitcoin::Client class documentation if you'd like to see the other options and methods
 that are made available.
 
+== Wallet Encryption
 
-== Donations
-
-If you found this library useful and feel inclined to compensate me for my trouble, I'm certainly not going to turn you down!
-
-Bitcoin donations can be sent to:
-
-  1HawYer58J9Vy3iju1w7jsRVci5tzaxkwn
-
-Thanks!
+  client.encrypt("password")
+  client.unlock("password", 20)
+  client.lock
 

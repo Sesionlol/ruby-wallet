@@ -225,7 +225,27 @@ module Bitcoin::DSL
   def validateaddress(bitcoinaddress)
     bitcoin.validateaddress
   end
-  
+
+  def encryptwallet(passphrase)
+    bitcoin.encryptwallet passphrase
+  end
+
+  def walletpassphrase(passphrase, timeout = 20)
+    bitcoin.walletpassphrase passphrase, timeout
+  end
+
+  def walletlock
+    bitcoin.walletlock
+  end
+
+  def dumpprivkey(address)
+    bitcoin.dumpprivkey address
+  end
+
+  alias encrypt encryptwallet
+  alias unlock walletpassphrase
+  alias lock walletlock
+  alias private_key dumpprivkey
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount

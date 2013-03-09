@@ -242,8 +242,28 @@ class Bitcoin::Client
   # version 0.7 Signs a raw transaction
   def signrawtransaction(hex, txinfo = nil, keys = nil)
     @api.request 'signrawtransaction', hex, txinfo, keys
-  end  
-  
+  end
+
+  def encryptwallet(passphrase)
+    @api.request 'encryptwallet', passphrase
+  end
+
+  def walletpassphrase(passphrase, timeout = 20)
+    @api.request 'walletpassphrase', passphrase
+  end
+
+  def walletlock
+    @api.request 'walletlock'
+  end
+
+  def dumpprivkey(address)
+    @api.request 'dumpprivkey', address
+  end
+
+  alias encrypt encryptwallet
+  alias unlock walletpassphrase
+  alias lock walletlock
+  alias private_key dumpprivkey
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
