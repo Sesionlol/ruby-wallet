@@ -2,7 +2,7 @@
 
 Ruby wallet provides full access to the bitcoind JSON-RPC API, along with abstractions to better organize the features.
 
-*For a full list of all implemented methods see [API Calls list](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).*
+For a full list of all implemented methods see [API Calls list](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list/).
 
 == Installation
 
@@ -14,9 +14,7 @@ Add the following to your Gemfile
 
 As with most Ruby gems, you first need to require the library into your project:
 
-```ruby
-require 'bitcoin'
-```
+  require 'bitcoin'
 
 After doing this, the simplest possible usage looks like this:
 
