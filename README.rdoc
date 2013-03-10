@@ -2,7 +2,7 @@
 
 Ruby wallet provides full access to the bitcoind JSON-RPC API, along with abstractions to better organize the features.
 
-For a full list of all implemented methods see https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list/.
+For a full list of all implemented methods see https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list.
 
 == Installation
 
