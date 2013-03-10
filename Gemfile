@@ -1,6 +1,5 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in bitcoind-client.gemspec
 gemspec
 
 platforms :ruby_18 do
