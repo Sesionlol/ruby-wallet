@@ -1,7 +1,6 @@
 = ruby-wallet
 
-Ruby wallet provides full access to the bitcoind JSON-RPC API, along with abstractions to better organize the features. For a full list of all implemented methods see
-{https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[API Method List].
+Ruby wallet provides full access to the bitcoind JSON-RPC API, along with abstractions to better organize the features. For a full list of all implemented methods see [API Method List](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
 
 Also supports customizing the host and port number to connect to.
 
@@ -59,8 +58,8 @@ You can send bitcoins directly from an account, with validations to prevent over
 Each account organizes a collection of addresses under a label. Addresses have their own set of useful methods.
 
   address = account.addresses.new
-  address.address # 8hdsakdjh82d9327ccb64642c - the address hash
-  address.total_received # returns the total amount received by the address
+  address.address                     # 8hdsakdjh82d9327ccb64642c - the address hash
+  address.total_received              # returns the total amount received by the address
 
 == Account Transactions
 
