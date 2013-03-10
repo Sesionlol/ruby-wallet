@@ -17,3 +17,30 @@ end
 def Bitcoin(user, pass, options = {})
   ::Bitcoin::Client.new(user, pass, options)
 end
+
+require 'ostruct'
+require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/core_ext/module/delegation'
+require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/string'
+
+require 'wallet/wallet'
+require 'wallet/account'
+require 'wallet/accounts'
+require 'wallet/addresses'
+require 'wallet/address'
+require 'wallet/transaction'
+require 'wallet/errors'
+
+module BitWallet
+  mattr_accessor :config
+  @@config = OpenStruct.new
+
+  def self.at(*args)
+    Wallet.new(*args)
+  end
+
+  def self.initialize(*args)
+    Wallet.new(*args)
+  end
+end
