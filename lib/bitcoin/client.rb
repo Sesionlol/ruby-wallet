@@ -248,7 +248,7 @@ class Bitcoin::Client
     @api.request 'encryptwallet', passphrase
   end
 
-  def walletpassphrase(passphrase, timeout = "20")
+  def walletpassphrase(passphrase, timeout = 20)
     @api.request 'walletpassphrase', passphrase, timeout
   end
 
