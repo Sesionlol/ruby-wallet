@@ -30,8 +30,9 @@ class Bitcoin::RPC
       puts response
       return response['result']
     rescue => e
-      puts e.response
-      return e.response['error']
+      response = JSON.prase(e.response)
+      puts response
+      return response['error']
     end
   end
 
