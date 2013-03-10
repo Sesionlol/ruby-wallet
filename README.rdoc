@@ -1,18 +1,15 @@
 = ruby-wallet
 
-Provides a Ruby library to the complete Bitcoin JSON-RPC API. Implements all methods listed
-at {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list].
+Ruby wallet provides full access to the bitcoind JSON-RPC API, along with abstractions to better organize the features. For a full list of all implemented methods see
+{https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[API Method List].
+
 Also supports customizing the host and port number to connect to.
 
 == Installation
 
-On Ruby 1.9, you can just install the gem and start using it. On 1.8, the 'json' gem is also required, so you'll need to install that first:
+Add the following to your Gemfile
 
-  gem install json
-
-Or, if you're using Bundler (and you should be), just add it to the Gemfile:
-
-  gem 'json', '~> 1.5.3'
+  gem "ruby-wallet", :git => "https://github.com/ruby-wallet/ruby-wallet.git"
 
 == Usage
 
@@ -22,101 +19,69 @@ As with most Ruby gems, you first need to require the library into your project:
 
 After doing this, the simplest possible usage looks like this:
 
-  Bitcoin('username', 'password').balance
+  RubyWallet.connect('username', 'password').balance
   # => 0.001
-
-Or, if you prefer a somewhat more explicit representation, the following code performs the exact
-same task:
-
-  client = Bitcoin::Client.new('username', 'password')
-  client.balance
-  # => 0.001
-  
-The third and final way to use the library is by taking advantage of a simple DSL:
-
-  include Bitcoin
-  
-  # set up credentials
-  username 'username'
-  password 'password'
-  
-  balance
-  # => 0.001
-  
-  accounts
-  # => {"account" => 0.001}
-  
-The RPC method names available to you are exactly the same as those listed on the Bitcoin wiki
-(again, that's {https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list}[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list]). Some aliases
-have been added to make them more "ruby-ish," but none of the original names have been changed.
-
 
 == Host, Port and SSL
 
-Here are several examples of how you can change the host information:
+You can specify connection information for remote clients.
 
-  Bitcoin('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
-  
-  client = Bitcoin::Client.new('username', 'password', :host => 'example.com')
-  client.port = 38332
-  client.ssl = true
-  client.ssl?
-  # => true
-  
-  include Bitcoin
-  host 'example.com'
-  port 38332
-  ssl?
-  # => false
-  ssl true
-  ssl?
-  # => true
-
-You should see the Bitcoin::Client class documentation if you'd like to see the other options and methods
-that are made available.
+  wallet = RubyWallet.connect('username', 'password', :host => 'example.com', :port => 38332, :ssl => true)
 
 == Wallet Encryption
 
-  client.encrypt("password")
-  client.unlock("password", 20)
-  client.lock
+Bitcoin now supports wallet encryption. You should encrypt your wallet then unlock it for a specific amount of time and re-lock the wallet as needed.
 
-= Abstractions
+  wallet.encrypt("password")
+  wallet.unlock("password", 20)        # 20 seconds until the wallet relock automatically
+  wallet.unlock("password")            # Defaults to 20 seconds if not specified
+  wallet.lock
 
-== Wallet
+== Wallet Accounts
 
-    wallet = BitWallet.connect(:username => 'username', :password => 'password')
-    wallet.accounts.with_balance # returns array of the accounts with balance > 0
-    account = wallet.accounts.new('account name')
-    account.addresses.count # 1, as it already comes with an address
-    account.balance # returns the balance of the account
-    address = account.addresses.new
-    address.address # 8hdsakdjh82d9327ccb64642c - the address hash
-    account.send_amount 5.5, to: '8hdsakdjh82d9327ccb64642c' # sends 5.5 bitcoin to the address
-    account.send_amount 5.5, to: address # sends 5.5 bitcoin to the BitWallet::Address#address
-    account.total_received # returns the total amount received by the account
-    account.transactions # returns array of 10 BitWallet::Transaction
-    account.transactions(limit: 5) # returns array of 5 BitWallet::Transaction
-    address.total_received # returns the total amount received by the address
+The wallet has an accounts method which organizes the bitcoin addresses in the wallet into groups.
+
+  account = wallet.accounts.new('account name')
+  wallet.accounts.with_balance         # returns array of the accounts with balance > 0
+
+  account.addresses.count              # 1, as it already comes with an address
+  account.balance                      # returns the balance of the account
+  account.total_received               # returns the total amount received by the account
+  account.transactions(limit: 5)       # returns array of 5 BitWallet::Transaction
+  account.transactions                 # returns array of 10 BitWallet::Transaction
+
+You can send bitcoins directly from an account, with validations to prevent overspending.
+
+  account.send_amount 5.5, to: address # sends 5.5 bitcoin to the BitWallet::Address#address
+
+== Account Addresses
+
+Each account organizes a collection of addresses under a label. Addresses have their own set of useful methods.
+
+  address = account.addresses.new
+  address.address # 8hdsakdjh82d9327ccb64642c - the address hash
+  address.total_received # returns the total amount received by the address
 
 == Transaction
 
 A transaction has the following methods:
 
-- `account`: the account it belongs to
-- `address`: the address it belongs to
-- `amount`: how much was transferred
-- `category`: returns the category value of the transaction
-- `confirmation`: how many times this has been confirmed by the network
-- `id`: the transaction id
-- `occurred_at`: Ruby Time object for the `time` value returned by bitcoind
-- `received_at`: Ruby Time object for the `timereceived` value returned by bitcoind
+  transaction = account.transactions
+  transaction.id
+  transaction.account
+  transaction.address
+  transaction.amount
+  transaction.category
+  transaction.confirmations
+  transaction.occurred_at
+  transaction.received_at
 
 == Credits
 
-This project started out by upgrading the existing project called bitcoin-client created by sinister chimpmunk. 
-Then combining the abstraction created by ramontayag bit_wallet which relied on sinsiterchimpmunks original code. 
-Together they make a more robust and complete client. I plan to track issues and continue to improve this project as
-the base of my bitcoin spree plugin. Feel free to issue feature request or contribute. 
+Ruby-wallet is a combination the existing projects 'bitcoin-client' created by sinister chimpmunk and 'bit_wallet' by ramontayag which relied on sinsiterchimpmunks original 
+code. Along with additional features added ontop of the original code to make a more robust and complete client.  
 
+Please share feature request, add any issues you run into or contribute to the project.
+
+I plan to use this as the base for a new spree bitcoin plugin in the future.
 
