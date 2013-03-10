@@ -14,7 +14,9 @@ Add the following to your Gemfile
 
 As with most Ruby gems, you first need to require the library into your project:
 
-  require 'bitcoin'
+```ruby
+require 'bitcoin'
+```
 
 After doing this, the simplest possible usage looks like this:
 
