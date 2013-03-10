@@ -111,3 +111,12 @@ A transaction has the following methods:
 - `id`: the transaction id
 - `occurred_at`: Ruby Time object for the `time` value returned by bitcoind
 - `received_at`: Ruby Time object for the `timereceived` value returned by bitcoind
+
+== Credits
+
+This project started out by upgrading the existing project called bitcoin-client created by sinister chimpmunk. 
+Then combining the abstraction created by ramontayag bit_wallet which relied on sinsiterchimpmunks original code. 
+Together they make a more robust and complete client. I plan to track issues and continue to improve this project as
+the base of my bitcoin spree plugin. Feel free to issue feature request or contribute. 
+
+

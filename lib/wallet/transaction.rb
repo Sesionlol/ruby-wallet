@@ -1,4 +1,4 @@
-module Wallet
+module RubyWallet
   class Transaction
 
     attr_reader(:account,

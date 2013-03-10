@@ -1,4 +1,4 @@
-module Wallet
+module RubyWallet
   class Accounts < Array
 
     attr_reader :wallet
@@ -20,7 +20,7 @@ module Wallet
       if self.includes_account_name?(name)
         account = self.find {|a| a.name == name}
       else
-        account = Wallet::Account.new(wallet, name)
+        account = RubyWallet::Account.new(wallet, name)
         self << account
       end
       account

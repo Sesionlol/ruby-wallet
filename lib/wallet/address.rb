@@ -1,4 +1,4 @@
-module Wallet
+module RubyWallet
   class Address
 
     attr_reader :account, :address
@@ -15,7 +15,7 @@ module Wallet
     end
 
     def total_received
-      client.getreceivedbyaddress(self.address, Wallet.config.min_conf)
+      client.getreceivedbyaddress(self.address, RubyWallet.config.min_conf)
     end
 
     def ==(other_address)

@@ -1,4 +1,4 @@
-module Wallet
+module RubyWallet
   class Addresses < Array
 
     attr_reader :account

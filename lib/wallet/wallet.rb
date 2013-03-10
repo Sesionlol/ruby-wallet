@@ -1,4 +1,4 @@
-module Wallet
+module RubyWallet
   class Wallet
 
     def initialize(config={})
