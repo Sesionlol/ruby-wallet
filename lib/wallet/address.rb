@@ -18,6 +18,10 @@ module RubyWallet
       client.getreceivedbyaddress(self.address, RubyWallet.config.min_conf)
     end
 
+    def private_key
+      client.private_key(self.address)
+    end
+
     def ==(other_address)
       self.address == other_address.address
     end

@@ -16,13 +16,23 @@ module RubyWallet
       end
     end
 
-    private
+    def encrypt(passphrase)
+      client.encrypt(passphrase)
+    end
 
+    def unlock(passphrase, timeout = 20)
+      client.unlock(passphrase, timeout)
+    end
+
+    def lock
+      client.lock
+    end
+
+    private
     def client
       @client ||= Bitcoin::Client.new(@config[:username],
                                       @config[:password],
                                       @config.slice(:port))
     end
-
   end
 end
