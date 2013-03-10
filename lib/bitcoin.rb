@@ -32,11 +32,11 @@ require 'wallet/address'
 require 'wallet/transaction'
 require 'wallet/errors'
 
-module BitWallet
+module Wallet
   mattr_accessor :config
   @@config = OpenStruct.new
 
-  def self.at(*args)
+  def self.connect(*args)
     Wallet.new(*args)
   end
 

@@ -1,4 +1,4 @@
-module BitWallet
+module Wallet
   class Transaction
 
     attr_reader(:account,

@@ -1,4 +1,4 @@
-module BitWallet
+module Wallet
   class Addresses < Array
 
     attr_reader :account

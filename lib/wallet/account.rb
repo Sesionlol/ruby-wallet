@@ -1,4 +1,4 @@
-module BitWallet
+module Wallet
   class Account
 
     attr_reader :wallet, :name
@@ -14,7 +14,7 @@ module BitWallet
       @addresses ||= Addresses.new(self)
     end
 
-    def balance(min_conf=BitWallet.config.min_conf)
+    def balance(min_conf=Wallet.config.min_conf)
       client.getbalance(self.name, min_conf)
     end
 
@@ -28,13 +28,13 @@ module BitWallet
       client.sendfrom(self.name,
                       options[:to],
                       amount,
-                      BitWallet.config.min_conf)
+                      Wallet.config.min_conf)
     rescue RestClient::InternalServerError => e
       parse_error e.response
     end
 
     def total_received
-      client.getreceivedbyaccount(self.name, BitWallet.config.min_conf)
+      client.getreceivedbyaccount(self.name, Wallet.config.min_conf)
     end
 
     def ==(other_account)

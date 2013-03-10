@@ -1,4 +1,4 @@
-module BitWallet
+module Wallet
   class Accounts < Array
 
     attr_reader :wallet
@@ -20,7 +20,7 @@ module BitWallet
       if self.includes_account_name?(name)
         account = self.find {|a| a.name == name}
       else
-        account = BitWallet::Account.new(wallet, name)
+        account = Wallet::Account.new(wallet, name)
         self << account
       end
       account

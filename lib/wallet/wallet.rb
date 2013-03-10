@@ -1,4 +1,4 @@
-module BitWallet
+module Wallet
   class Wallet
 
     def initialize(config={})

@@ -1,3 +1,3 @@
-module BitWallet
-  VERSION = '0.1.1'
+module Wallet
+  VERSION = '0.0.1'
 end
