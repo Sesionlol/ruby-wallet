@@ -32,7 +32,7 @@ require 'wallet/address'
 require 'wallet/transaction'
 require 'wallet/errors'
 
-module Wallet
+module RubyWallet
   mattr_accessor :config
   @@config = OpenStruct.new
 
