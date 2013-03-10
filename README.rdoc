@@ -62,7 +62,7 @@ Each account organizes a collection of addresses under a label. Addresses have t
   address.address # 8hdsakdjh82d9327ccb64642c - the address hash
   address.total_received # returns the total amount received by the address
 
-== Transaction
+== Account Transactions
 
 A transaction has the following methods:
 
