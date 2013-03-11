@@ -30,7 +30,7 @@ class Bitcoin::RPC
       puts response
       return response['result']
     rescue => e
-      if e.response
+      unless e.response.nil?
         response = JSON.parse(e.response)
         puts response
         return response['error']
