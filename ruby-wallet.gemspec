@@ -5,8 +5,8 @@ require "bitcoin/version"
 Gem::Specification.new do |s|
   s.name        = "ruby-wallet"
   s.version     = Bitcoin::VERSION
-  s.authors     = ["oGMinor"]
-  s.email       = ["oGMinor@nullfrequency.com"]
+  s.authors     = [""]
+  s.email       = [""]
   s.homepage    = "http://github.com/rocketscientists/ruby-wallet"
   s.summary     = %q{Provides a Ruby library to the complete Bitcoin JSON-RPC API.}
   s.description = "Provides a Ruby library to the complete Bitcoin JSON-RPC API. "+
