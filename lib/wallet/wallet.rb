@@ -38,11 +38,13 @@ module RubyWallet
 
     private
     def client
-      @client ||= Bitcoin::Client.new(@config[:username],
-                                      @config[:password],
-                                      :port => @config[:port] || @config.slice(:port),
-                                      :host => @config[:host] || "localhost",
-                                      :ssl => @config[:ssl]  || "false" )
+      puts @config.slice(:port)
+      puts @config.to_json
+      puts @config[:ssl]
+      puts @config[:host]
+      @client ||= Bitcoin(@config[:username],
+                          @config[:password],
+                          @config.slice(:port))
     end
   end
 end
