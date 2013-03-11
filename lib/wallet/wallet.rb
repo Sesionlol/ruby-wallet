@@ -32,17 +32,17 @@ module RubyWallet
       client.lock
     end
 
-    def validate_address(address)
-      client.validateaddress(address)
+    def validate_address(bitcoinaddress)
+      client.validateaddress(bitcoinaddress)
     end
 
     private
     def client
       @client ||= Bitcoin::Client.new(@config[:username],
                                       @config[:password],
-                                      @config[:port] || @config.slice(:port),
-                                      @config[:host] || "localhost",
-                                      @config[:ssl]  || "false" )
+                                      :port => @config[:port] || @config.slice(:port),
+                                      :host => @config[:host] || "localhost",
+                                      :ssl => @config[:ssl]  || "false" )
     end
   end
 end
