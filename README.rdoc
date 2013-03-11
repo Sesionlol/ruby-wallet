@@ -71,8 +71,8 @@ Each account organizes a collection of addresses under a label. Addresses have t
 
   address = account.addresses.new
   address.address                      # 8hdsakdjh82d9327ccb64642c - the address hash
-  address.total_received               # Returns the total amount received by the address
-  address.private_key                  # Returns the private key for the address
+  address.total_received               # returns the total amount received by the address
+  address.private_key                  # returns the private key for the address
 
 
 == Account Transactions
