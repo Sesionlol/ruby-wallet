@@ -1,6 +1,5 @@
 module RubyWallet
   class Account
-
     attr_reader :wallet, :name
     delegate :client, to: :wallet
 
