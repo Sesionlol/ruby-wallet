@@ -27,15 +27,10 @@ class Bitcoin::RPC
       respdata = RestClient.post service_url, request.to_post_data
       response = JSON.parse(respdata)
       raise Bitcoin::Errors::RPCError, response['error'] if response['error']
-      puts response
       return response['result']
     rescue => e
-      unless e.response.nil?
-        response = JSON.parse(e.response)
-        puts response
-        return response['error']
-      end
-      puts e.to_json
+      response = JSON.parse(e.response)
+      return response['error']
     end
   end
 
