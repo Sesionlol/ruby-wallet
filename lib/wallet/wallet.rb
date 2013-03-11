@@ -44,7 +44,11 @@ module RubyWallet
       puts @config[:host]
       @client ||= Bitcoin(@config[:username],
                           @config[:password],
-                          @config.slice(:port))
+                          :port => (@config[:port] || "8332"),
+                          :host => (@config[:host] || "localhost"),
+                          :ssl => (@config[:ssl] || false)
+                         )
+      
     end
   end
 end
