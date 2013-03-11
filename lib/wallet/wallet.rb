@@ -20,8 +20,12 @@ module RubyWallet
       client.encrypt(passphrase)
     end
 
-    def unlock(passphrase, timeout = 20)
+    def unlock(passphrase, timeout = 20, &block)
       client.unlock(passphrase, timeout)
+      if block
+        block.call
+        client.lock
+      end
     end
 
     def lock
@@ -32,7 +36,9 @@ module RubyWallet
     def client
       @client ||= Bitcoin::Client.new(@config[:username],
                                       @config[:password],
-                                      @config.slice(:port))
+                                      @config[:port] || @config.slice(:port),
+                                      @config[:host] || "localhost",
+                                      @config[:ssl]  || "false" )
     end
   end
 end

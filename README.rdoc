@@ -31,10 +31,15 @@ You can specify connection information for remote clients.
 
 Bitcoin now supports wallet encryption. You should encrypt your wallet then unlock it for a specific amount of time and re-lock the wallet as needed.
 
-  wallet.encrypt("password")
-  wallet.unlock("password", 20)        # 20 seconds until the wallet relock automatically
-  wallet.unlock("password")            # Defaults to 20 seconds if not specified
+  wallet.encrypt("passphrase")
+  wallet.unlock("passphrase", 20)        # 20 seconds until the wallet relock automatically
   wallet.lock
+
+You can pass the encryption passphrase along with a block of code to be executed once the wallet is unlocked. After the code is executed the wallet is re-locked.
+
+  wallet.unlock("passphrase") do         # Defaults to 20 seconds if not specified
+    account.send_amount 5.5, to: address
+  end
 
 == Wallet Accounts
 
@@ -59,7 +64,9 @@ Each account organizes a collection of addresses under a label. Addresses have t
 
   address = account.addresses.new
   address.address                      # 8hdsakdjh82d9327ccb64642c - the address hash
-  address.total_received               # returns the total amount received by the address
+  address.total_received               # Returns the total amount received by the address
+  address.private_key                  # Returns the private key for the address
+
 
 == Account Transactions
 
