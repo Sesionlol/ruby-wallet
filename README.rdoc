@@ -35,7 +35,7 @@ Bitcoin now supports wallet encryption. You should encrypt your wallet then unlo
   wallet.unlock("passphrase", 20)        # 20 seconds until the wallet relock automatically
   wallet.lock
 
-You can pass the encryption passphrase along with a block of code to be executed once the wallet is unlocked. After the code is executed the wallet is re-locked.
+You can pass the encryption passphrase along with a block of code to be executed once the wallet is unlocked. After the code is executed the wallet is re-locked automatically.
 
   wallet.unlock("passphrase") do         # Defaults to 20 seconds if not specified
     account.send_amount 5.5, to: address
