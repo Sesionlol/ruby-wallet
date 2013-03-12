@@ -47,6 +47,12 @@ module RubyWallet
       end
     end
 
+    def transactions(options{})
+      client.listtransactions(self.name, 9999).map do |hash|
+        Transaction.new self.wallet, hash
+      end
+    end
+
     private
 
     def parse_error(response)
