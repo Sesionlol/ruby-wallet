@@ -30,6 +30,10 @@ module RubyWallet
       self.find {|a| a.name == account_name}.present?
     end
 
+    def where_account_name(account_name)
+      self.find {|a| a.name == account_name}
+    end
+
     private
 
     def existing_accounts
