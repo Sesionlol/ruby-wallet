@@ -2,6 +2,7 @@ module RubyWallet
   class Transaction
 
     attr_reader(:account,
+                :address,
                 :amount,
                 :category,
                 :confirmations,
