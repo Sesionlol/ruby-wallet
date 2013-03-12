@@ -5,6 +5,10 @@ module RubyWallet
       @config = config
     end
 
+    def balance
+      client.balance
+    end
+
     def accounts
       @accounts ||= Accounts.new(self)
     end
