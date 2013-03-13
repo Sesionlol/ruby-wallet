@@ -18,8 +18,8 @@ module RubyWallet
       @address = args[:address]
       @amount = args[:amount]
       @confirmations = args[:confirmations]
-      @occurred_at = Time.at(args[:time])
-      @received_at = Time.at(args[:timereceived])
+      @occurred_at = Time.at(args[:time]) if args[:time]
+      @received_at = Time.at(args[:timereceived]) if args[:timereceived]
       @category = args[:category]
     end
 
