@@ -32,6 +32,16 @@ module RubyWallet
       parse_error e.response
     end
 
+    def move_to(amount, options={})
+      to_account = RubyWallet.accounts.where_account_name(options[:to])
+      if to_account
+        to = to_account.name
+      else
+        fail ArgumentError, 'could not find account'
+      end
+      client.move(self.name, to, amount, RubyWallet.config.min_conf)
+    end
+
     def total_received
       client.getreceivedbyaccount(self.name, RubyWallet.config.min_conf)
     end
