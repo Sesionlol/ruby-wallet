@@ -33,7 +33,7 @@ module RubyWallet
     end
 
     def move_to(amount, options={})
-      to_account = RubyWallet.wallet.accounts.where_account_name(options[:to])
+      to_account = Wallet.accounts.where_account_name(options[:to])
       if to_account
         to = to_account.name
       else
