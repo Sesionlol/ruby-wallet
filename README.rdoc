@@ -64,6 +64,9 @@ You can send bitcoins directly from an account, with validations to prevent over
 
   account.send_amount 5.5, to: address # sends 5.5 bitcoin to the BitWallet::Address#address
 
+You can send multiple payments in one transaction using Array<Hash>:
+
+  account.send_many({address:amount,...})
 
 == Account Addresses
 

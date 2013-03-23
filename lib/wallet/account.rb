@@ -32,6 +32,14 @@ module RubyWallet
       parse_error e.response
     end
 
+    def send_many(options={})
+      client.sendmany(self.name,
+                      options,
+                      RubyWallet.config.min_conf)
+    rescue RestClient::InternalServerError => e
+      parse_error e.response
+    end
+
     def move_to(amount, options={})
       to_account = RubyWallet.wallet.accounts.where_account_name(options[:to])
       if to_account
