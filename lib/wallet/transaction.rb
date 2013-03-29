@@ -3,6 +3,7 @@ module RubyWallet
 
     attr_reader(:account,
                 :address,
+                :recipient_account,
                 :amount,
                 :category,
                 :confirmations,
