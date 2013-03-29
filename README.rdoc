@@ -102,3 +102,6 @@ Share feature request, add any issues you run into or contribute to the project.
 
 I plan to use this as the base for a new spree bitcoin plugin in the near future.
 
+Donate to the ruby-wallet projects 
+16KnvuTmxcVnQcchjeawKmmcDx1J29JYB
+
