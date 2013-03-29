@@ -154,7 +154,7 @@ class Bitcoin::Client
   end
 
   # Returns up to +count+ most recent transactions for account +account+.
-  def listtransactions(account, count = 10)
+  def listtransactions(account = nil, count = 10)
     @api.request 'listtransactions', account, count
   end
 
