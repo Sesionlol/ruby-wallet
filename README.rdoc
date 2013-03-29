@@ -65,6 +65,8 @@ You can send bitcoins directly from an account, with validations to prevent over
   account.send_amount 5.5, to: address # sends 5.5 bitcoin to the BitWallet::Address#address
 
 
+# Document send_many function
+
 == Account Addresses
 
 Each account organizes a collection of addresses under a label. Addresses have their own set of useful methods.
@@ -84,6 +86,7 @@ A transaction has the following methods
   transaction.id
   transaction.account
   transaction.address
+  transaction.recipient_account
   transaction.amount
   transaction.category
   transaction.confirmations
