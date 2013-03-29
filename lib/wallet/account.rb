@@ -30,7 +30,7 @@ module RubyWallet
                       RubyWallet.config.min_conf)
       rescue RestClient::InternalServerError => e
         parse_error e.response
-      end
+      
     end
 
 
@@ -41,7 +41,7 @@ module RubyWallet
 
       rescue RestClient::InternalServerError => e
         parse_error e.response
-      end
+    
     end
 
     def move_to(amount, options={})
