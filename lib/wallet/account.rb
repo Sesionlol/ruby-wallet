@@ -28,9 +28,11 @@ module RubyWallet
                       options[:to],
                       amount,
                       RubyWallet.config.min_conf)
-    rescue RestClient::InternalServerError => e
-      parse_error e.response
+      rescue RestClient::InternalServerError => e
+        parse_error e.response
+      end
     end
+
 
     def send_many(options={})
       client.sendmany(self.name,
