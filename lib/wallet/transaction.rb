@@ -16,6 +16,7 @@ module RubyWallet
       @account = wallet.accounts.new(args[:account])
       @id = args[:txid]
       @address = args[:address]
+      @otheraccount = args[:otheraccount]
       @amount = args[:amount]
       @confirmations = args[:confirmations]
       @occurred_at = Time.at(args[:time]) if args[:time]
