@@ -14,7 +14,7 @@ module RubyWallet
     end
 
     def recent_transactions(count)
-      client.listtransactions(nil, count).map do |hash|
+      client.listtransactions("*", count).map do |hash|
         Transaction.new self, hash
       end
     end
