@@ -29,6 +29,10 @@ You can confirm if addresses are valid using the wallet method
 
   wallet.validate_address(address)
 
+You can view the recent transactions of the entire wallet, or just a specific range.
+
+  wallet.recent_transactions(15)         # Returns 15 transactions 
+  wallet.recent_transactions(15,999)     # Returns 15-999
 
 == Wallet Encryption
 
@@ -92,7 +96,6 @@ A transaction has the following methods
   transaction.confirmations
   transaction.occurred_at
   transaction.received_at
-
 
 == Credits
 
