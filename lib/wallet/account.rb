@@ -62,14 +62,8 @@ module RubyWallet
       self.name == other_account.name
     end
 
-    def recent_transactions(from = 0, to)
+    def transactions(from = 0, to)
       client.listtransactions(self.name, to, from).map do |hash|
-        Transaction.new self.wallet, hash
-      end
-    end
-
-    def transactions(options={})
-      client.listtransactions(self.name, 9999).map do |hash|
         Transaction.new self.wallet, hash
       end
     end
@@ -87,6 +81,5 @@ module RubyWallet
               end
       fail error if error
     end
-
   end
 end
