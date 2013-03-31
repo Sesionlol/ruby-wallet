@@ -62,9 +62,8 @@ module RubyWallet
       self.name == other_account.name
     end
 
-    def recent_transactions(options={})
-      count = options.delete(:limit) || 10
-      client.listtransactions(self.name, count).map do |hash|
+    def recent_transactions(from = 0, to)
+      client.listtransactions(self.name, to, from).map do |hash|
         Transaction.new self.wallet, hash
       end
     end
