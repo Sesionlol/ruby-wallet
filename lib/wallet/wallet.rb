@@ -13,7 +13,7 @@ module RubyWallet
       @accounts ||= Accounts.new(self)
     end
 
-    def recent_transactions(account = "*", from = 0, to)
+    def transactions(account = "*", from = 0, to)
       client.listtransactions(account, to, from).map do |hash|
         Transaction.new self, hash
       end
