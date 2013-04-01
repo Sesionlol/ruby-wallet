@@ -5,8 +5,8 @@ module RubyWallet
       @config = config
     end
 
-    def balance
-      client.balance
+    def balance(account = nil)
+      client.balance(account)
     end
 
     def accounts
