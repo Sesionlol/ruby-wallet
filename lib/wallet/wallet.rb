@@ -9,6 +9,10 @@ module RubyWallet
       client.balance(account)
     end
 
+    def total_received(account = "*")
+      client.getreceivedbyaccount(account, RubyWallet.config.min_conf)
+    end
+
     def accounts
       @accounts ||= Accounts.new(self)
     end
