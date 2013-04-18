@@ -10,7 +10,7 @@ module RubyWallet
 
     def initialize(wallet)
       @wallet = wallet
-      return client.listaccounts
+      return @wallet.listaccounts
     end
 
     def new(name)
