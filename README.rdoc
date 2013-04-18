@@ -103,6 +103,10 @@ Ruby-wallet was originally based on a combination the existing projects 'bitcoin
 
 Share feature request, add any issues you run into or contribute to the project.
 
+== Future Plans
+
+I will build out the features, fix code, replace slow logic and then make this software coin neutral.
+
 I plan to use this as the base for a new spree bitcoin plugin in the near future.
 
 Donate to the ruby-wallet projects 
