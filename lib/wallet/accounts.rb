@@ -10,7 +10,9 @@ module RubyWallet
 
     def initialize(wallet)
       @wallet = wallet
-      return @wallet.listaccounts
+      @wallet.each do |account|
+        self.push(account)
+      end
     end
 
     def new(name)
