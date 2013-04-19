@@ -5,7 +5,7 @@ module RubyWallet
     delegate :client, to: :wallet
 
     def with_balance
-      self.select { |account| account.balance > 0 }
+      self.detect { |account| account[:balance] > 0 }
     end
 
     def initialize(wallet)
@@ -17,7 +17,7 @@ module RubyWallet
 
     def new(name)
       if self.includes_account_name?(name)
-        account = self.find {|a| a.name == name}
+        account = self.detect {|a| a[:name] == name}
       else
         account = RubyWallet::Account.new(wallet, name)
         self << account
@@ -26,11 +26,11 @@ module RubyWallet
     end
 
     def includes_account_name?(account_name)
-      self.find {|a| a.name == account_name}.present?
+      self.detect {|a| a[:name] == account_name}.present?
     end
 
     def where_account_name(account_name)
-      self.find {|a| a.name == account_name}
+      self.detect {|a| a[:name] == account_name}
     end
 
     private
