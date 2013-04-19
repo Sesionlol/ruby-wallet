@@ -29,7 +29,6 @@ module RubyWallet
       rescue RestClient::InternalServerError => e
         parse_error e.response
     end
-rogue
 
     def send_many(options={})
       client.sendmany(self.name,
