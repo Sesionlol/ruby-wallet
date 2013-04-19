@@ -11,7 +11,7 @@ module RubyWallet
     def initialize(wallet)
       @wallet = wallet
       client.listaccounts.each do |account|
-        self.push(:name => account[0], :amount => account[1])
+        self.push(Account.new(account[0], account[1]))
       end
     end
 

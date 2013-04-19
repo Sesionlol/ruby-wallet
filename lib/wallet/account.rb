@@ -6,7 +6,6 @@ module RubyWallet
     def initialize(wallet, name)
       @wallet = wallet
       @name = name
-      self.addresses.new
     end
 
     def addresses
@@ -23,7 +22,6 @@ module RubyWallet
       else
         fail ArgumentError, 'address must be specified'
       end
-
       client.sendfrom(self.name,
                       options[:to],
                       amount,
@@ -31,7 +29,7 @@ module RubyWallet
       rescue RestClient::InternalServerError => e
         parse_error e.response
     end
-
+rogue
 
     def send_many(options={})
       client.sendmany(self.name,
