@@ -170,7 +170,7 @@ class Bitcoin::Client
 
   # +amount+ is a real and is rounded to 8 decimal places. Returns the transaction ID if successful.
   def sendmany(fromaccount, payments, minconf = 1, comment = nil)
-    @api.request 'sendmany', fromaccount, payments, minconf, comment
+    @api.request 'sendmany', fromaccount, "'#{payments}'", minconf, comment
   end
 
   # +amount+ is a real and is rounded to 8 decimal places
